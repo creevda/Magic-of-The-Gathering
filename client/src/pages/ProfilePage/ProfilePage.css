@@ -1,0 +1,84 @@
+.logWindow {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logTitle {
+  margin-bottom: 30px;
+  font-size: 45px;
+  color: hsla(181, 67%, 31%, 1);
+}
+
+.inputBlockLog {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  height: 20px;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+
+.buttonBlockLog {
+  display: flex;
+  width: 30%;
+  margin-top: 15px;
+  justify-content: space-evenly;
+}
+
+.inputLog {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 15px 15px 15px 0;
+  outline: none;
+  border: 1px solid rgba(24, 80, 24, 0.94);
+  border-radius: 25px;
+  height: 45px;
+  width: 70%;
+  line-height: 0;
+  text-decoration: none;
+  color: rgba(24, 80, 24, 0.94);
+  background-color: #c9e2c9ef;
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+}
+
+.logBtn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 15px 15px 15px 0;
+  outline: none;
+  border: 1px solid rgba(24, 80, 24, 0.94);
+  border-radius: 25px;
+  height: 46px;
+  width: 100%;
+  line-height: 0;
+  text-decoration: none;
+  color: rgba(24, 80, 24, 0.94);
+  background-color: #c9e2c9ef;
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+  font-weight: bold;
+}
+
+.logBtn:hover {
+  transform: translate(0,-2px);
+  box-shadow: 0 20px 40px 0 #7aab7aef;
+}
