@@ -1,0 +1,85 @@
+
+.regWindow {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.regTitle {
+  margin-bottom: 30px;
+  font-size: 45px;
+  color: rgba(108, 31, 116, 0.986);
+}
+
+.inputBlockReg {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 20px;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+
+.buttonBlockReg {
+  display: flex;
+  width: 30%;
+  margin-top: 15px;
+  justify-content: space-evenly;
+}
+
+.regInput {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 15px 15px 15px 0;
+  outline: none;
+  border: 1px solid rgba(121, 13, 133, 0.479);
+  border-radius: 25px;
+  height: 45px;
+  width: 30%;
+  line-height: 0;
+  text-decoration: none;
+  color: rgba(108, 31, 116, 0.986);
+  background-color: rgba(230, 77, 235, 0.144);
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+}
+
+.regBtn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 15px 15px 15px 0;
+  outline: none;
+  border: 1px solid rgba(121, 13, 133, 0.479);
+  border-radius: 25px;
+  height: 46px;
+  width: 100%;
+  line-height: 0;
+  text-decoration: none;
+  color: rgba(108, 31, 116, 0.986);
+  background-color: rgba(230, 77, 235, 0.144);
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+  font-weight: bold;
+}
+
+.regBtn:hover {
+  transform: translate(0,-2px);
+  box-shadow: 0 20px 40px 0 rgba(230, 77, 235, 0.384);
+}

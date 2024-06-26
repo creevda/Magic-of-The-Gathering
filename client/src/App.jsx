@@ -1,23 +1,21 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable react/react-in-jsx-scope */
 import './App.css';
-
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
-import Cards from './components/Card';
-import HomePage from './pages/HomePage';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 
 function App() {
-
-
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <HomePage />,
-    },
-  ]);
-
-  return <RouterProvider router={router} />
-}
-
-export default App;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<ProfilePage />} />
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
+      </Routes>
+    </Router>
+  );

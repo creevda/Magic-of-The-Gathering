@@ -21,7 +21,7 @@ module.exports = {
       post_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
+          model: 'Posts',
           key: 'id',
         },
         onDelete: 'cascade',
