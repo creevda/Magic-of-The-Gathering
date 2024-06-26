@@ -10,7 +10,7 @@
 .logTitle {
   margin-bottom: 30px;
   font-size: 45px;
-  color: hsla(181, 67%, 31%, 1);
+  color: rgba(108, 31, 116, 0.986);
 }
 
 .inputBlockLog {
@@ -29,20 +29,20 @@
   justify-content: space-evenly;
 }
 
-.inputLog {
+.inputProfile {
   display: inline-block;
   box-sizing: border-box;
   padding: 15px;
   margin: 15px 15px 15px 0;
   outline: none;
-  border: 1px solid rgba(24, 80, 24, 0.94);
+  border: 1px solid rgba(121, 13, 133, 0.479);
   border-radius: 25px;
   height: 45px;
-  width: 70%;
+  width: 140%;
   line-height: 0;
   text-decoration: none;
-  color: rgba(24, 80, 24, 0.94);
-  background-color: #c9e2c9ef;
+  color: rgba(108, 31, 116, 0.986);
+  background-color: rgba(230, 77, 235, 0.144);
   position: relative;
   overflow: hidden;
   vertical-align: top;
@@ -54,20 +54,25 @@
   text-align: center;
 }
 
-.logBtn {
+
+.desc {
+  height: 245px;
+}
+
+.btnProfile {
   display: inline-block;
   box-sizing: border-box;
   padding: 15px;
   margin: 15px 15px 15px 0;
   outline: none;
-  border: 1px solid rgba(24, 80, 24, 0.94);
+  border: 1px solid rgba(121, 13, 133, 0.479);
   border-radius: 25px;
   height: 46px;
-  width: 100%;
+  width: 140%;
   line-height: 0;
   text-decoration: none;
-  color: rgba(24, 80, 24, 0.94);
-  background-color: #c9e2c9ef;
+  color: rgba(108, 31, 116, 0.986);
+  background-color: rgba(230, 77, 235, 0.144);
   position: relative;
   overflow: hidden;
   vertical-align: top;
@@ -78,7 +83,57 @@
   font-weight: bold;
 }
 
-.logBtn:hover {
+.btnProfile:hover {
   transform: translate(0,-2px);
-  box-shadow: 0 20px 40px 0 #7aab7aef;
+  box-shadow: 0 20px 40px 0 rgba(230, 77, 235, 0.384);
+}
+
+.container {
+  justify-content: flex-end;
+  padding-top: 150px;
+  padding-left: 150px;
+  display: flex;
+  height: 500px;
+  width: 120%;
+}
+
+.leftSide {
+  flex: 0 0 100%;
+  height: 66.66vh;
+  width: 66.66vh;
+  background-color: rgba(108, 31, 116, 0.301);
+  margin-right: 150px;
+}
+
+.rightSide {
+  flex: 0 0 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectProfile {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 15px 15px 15px 0;
+  outline: none;
+  border: 1px solid rgba(121, 13, 133, 0.479);
+  border-radius: 25px;
+  height: 45px;
+  width: 140%;
+  line-height: 0;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.986); /* Цвет текста */
+  background-color: rgba(230, 77, 235, 0.144);
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
-import { getAuthCookies } from '../../utils/utility.js';
+import { getAuthCookies } from '../../utils/utility';
 import './Layout.css';
 
 function Layout() {

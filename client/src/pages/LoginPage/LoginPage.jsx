@@ -1,3 +1,6 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/react-in-jsx-scope */
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';

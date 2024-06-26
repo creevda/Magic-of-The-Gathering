@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import './Header.css';
 import axios from 'axios';
@@ -20,9 +21,8 @@ function Header() {
 
   return (
     <div className="header">
-      <div className="logo">Resume HH</div>
+      <div className="logo">Карточки, картишки, картюшечки</div>
       <nav className="header-nav">
-        { pathname !== '/home' && <button className="header-btn" onClick={() => navigate('/home')}>Главная страница</button> }
         { pathname !== '/' && <button className="header-btn" onClick={() => navigate('/')}>Личный кабинет</button> }
         { pathname === '/' && <button className="header-btn" onClick={logout}>Выйти из учётной записи</button> }
       </nav>
