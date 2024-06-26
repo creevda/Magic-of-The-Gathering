@@ -1,7 +1,7 @@
-.wrapper{
+.wrapper {
   border: 1px solid black;
   width: 300px;
- 
+
   align-content: center;
   align-items: center;
   background-color: #7070d4;
@@ -14,15 +14,11 @@
 .body {
   display: flex;
   justify-content: space-between;
-  
 }
 
 .image-radius {
-  border-radius: 10px;  /* Скругление углов изображения */
+  border-radius: 10px; /* Скругление углов изображения */
   border: 5px solid #fff; /* Цвет и ширину рамки */
   box-shadow: 2px 1px 5px #999999; /* Цвет и размер тени */
   margin-top: 15px;
-
 }
-
-

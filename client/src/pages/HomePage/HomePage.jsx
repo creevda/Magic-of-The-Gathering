@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../components/SearchBar.css";
+import "../../components/SearchBar.css";
 import { MDBContainer } from "mdb-react-ui-kit";
 import styles from "./HomePage.module.css";
 import axios from "axios";
-import Cards from "../components/Card";
+import Cards from "../../components/Card";
 
 export default function HomePage() {
   const [searchInput, setSearchInput] = useState("");

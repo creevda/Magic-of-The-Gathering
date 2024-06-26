@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import react from "react";
-import axios from "axios";
-import styles from "./Card.module.css";
 import "animate.css";
 import {
   Avatar,
@@ -14,16 +12,9 @@ import {
   CardFooter,
   ButtonGroup,
   Button,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverArrow,
-  PopoverCloseButton,
-  Input,
   Image,
 } from "@chakra-ui/react";
+import styles from "./Card.module.css";
 
 export default function Cards({ card }) {
   const [cards, setCards] = useState({
@@ -33,7 +24,7 @@ export default function Cards({ card }) {
   const heandlerInfo = () => {
     setFullInfo((prev) => !prev);
   };
-  //   animate__flipInX
+  //animate__flipInX
   //animate__flipInX
   return (
     <>
@@ -61,7 +52,7 @@ export default function Cards({ card }) {
             <CardBody className="cardd">
               <Image
                 className="image-radius"
-                src={card.imageUrl ? card.imageUrl : 'card.jpg'}
+                src={card.imageUrl ? card.imageUrl : "card.jpg"}
                 alt="Green double couch with wooden legs"
                 borderRadius="15px"
                 marginTop="15px"
