@@ -11,7 +11,7 @@ function RegistrationPage() {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+ 
   const registrationHandler = async () => {
     const result = await axios.post(
       'http://localhost:3000/auth/registration',

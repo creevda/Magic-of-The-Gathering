@@ -42,3 +42,6 @@
 body {
   background-color: #ebc3d0;
 }
+body, button, input, select, textarea {
+  font-family: 'Oswald', sans-serif;
+}
