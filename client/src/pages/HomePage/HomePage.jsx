@@ -5,34 +5,38 @@ import styles from "./HomePage.module.css";
 import axios from "axios";
 import Cards from "../../components/Card";
 
-export default function HomePage() {
+export default function HomePage({ user }) {
   const [searchInput, setSearchInput] = useState("");
   const [cards, setCards] = useState({
     loading: true,
+    data: [],
   });
 
-  useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const { data } = await axios.get(
-          `https://api.magicthegathering.io/v1/cards`
-        );
-        setCards(() => ({ data: data.cards, loading: false }));
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-    fetchCards();
-  }, []);
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      // searchHandle();
+  const fetchCards = async (query = "") => {
+    try {
+      const { data } = await axios.get(
+        `https://api.magicthegathering.io/v1/cards`
+      );
+      const filteredCards = data.cards.filter(card =>
+        card.name.toLowerCase().includes(query.toLowerCase()) ||
+        card.type.toLowerCase().includes(query.toLowerCase()) ||
+        card.artist.toLowerCase().includes(query.toLowerCase()) ||
+        card.setName.toLowerCase().includes(query.toLowerCase()) ||
+        card.rarity.toLowerCase().includes(query.toLowerCase())
+      );
+      setCards({ data: filteredCards, loading: false });
+    } catch (err) {
+      console.log(err.message);
     }
   };
+
+  useEffect(() => {
+    fetchCards(searchInput);
+  }, [searchInput]);
+
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapperHome}>
         <MDBContainer className="py-5">
           <input
             type="text"
@@ -40,7 +44,6 @@ export default function HomePage() {
             placeholder="Поиск..."
             style={{ color: "black" }}
             onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={handleKeyDown}
             value={searchInput}
           />
         </MDBContainer>
@@ -55,7 +58,7 @@ export default function HomePage() {
         >
           {!cards.loading &&
             cards.data.map(
-              (card, i) => i % 2 === 0 && <Cards key={card.id} card={card} />
+              (card, i) => i % 2 === 0 && <Cards key={card.id} card={card} user={user}/>
             )}
         </div>
       </div>

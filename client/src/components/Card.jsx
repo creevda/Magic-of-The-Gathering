@@ -15,16 +15,36 @@ import {
   Image,
 } from "@chakra-ui/react";
 import styles from "./Card.module.css";
+import axios from "axios";
+import axiosInstance from '../axiosInstance'
 
-export default function Cards({ card }) {
-  const [cards, setCards] = useState({
-    loading: true,
-  });
+export default function Cards({ card, user }) {
+  const [cardInfo, setCardInfo] = useState({});
   const [fullInfo, setFullInfo] = useState(false);
+
+  const buyButtonHandle = async () => {
+    try {
+      const newCard = await axiosInstance.post("http://localhost:3000/cards", {
+        name: card.name,
+        category: card.type,
+        price: 1000,
+        city_owner: "Moscow",
+        description: card.text,
+        img: card.imageUrl,
+        frazzle: "new",
+        sold: false,
+        serialId: card.id
+      });
+      setCardInfo(() => newCard);
+      // setAccessToken(res.data.accessToken);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+ 
   const heandlerInfo = () => {
     setFullInfo((prev) => !prev);
   };
-  //animate__flipInX
   //animate__flipInX
   return (
     <>
@@ -82,6 +102,7 @@ export default function Cards({ card }) {
                   Подробнее
                 </Button>
                 <Button
+                  onClick={buyButtonHandle}
                   variant="ghost"
                   colorScheme="blue"
                   className="btn2"

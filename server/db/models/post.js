@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     img: DataTypes.STRING,
     frazzle: DataTypes.STRING,
-    sold: DataTypes.BOOLEAN
+    sold: DataTypes.BOOLEAN,
+    serialId: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Post',
