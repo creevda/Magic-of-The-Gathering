@@ -4,7 +4,8 @@ import './Header.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-function Header() {
+function Header({user}) {
+  console.log(user)
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
