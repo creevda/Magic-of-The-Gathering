@@ -6,6 +6,7 @@ import axios from "axios";
 import Cards from "../../components/Card";
 
 export default function HomePage() {
+  
   const [searchInput, setSearchInput] = useState("");
   const [cards, setCards] = useState({
     loading: true,
@@ -16,10 +17,9 @@ export default function HomePage() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const { data } = await axios.get(
-          `https://api.magicthegathering.io/v1/cards`
-        );
+        const { data } = await axios.get('https://api.magicthegathering.io/v1/cards');
         setCards(() => ({ data: data.cards, loading: false }));
+        console.log(cart,'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');
       } catch (err) {
         console.log(err.message);
       }
@@ -36,7 +36,16 @@ export default function HomePage() {
   const addToCart = (card) => {
     setCart([...cart, card]);
   };
-
+  const buyCard = async (cardId) => {
+    try {
+      console.log(`http://localhost:3000/cards/${cardId}/buy`);
+      console.log(cart);
+      await axios.put(`http://localhost:3000/cards/${cardId}/buy`,{name:cart[0].name,});
+      removeFromCart(cardId); // Удаляем карту из корзины после покупки
+    } catch (error) {
+      console.error("Ошибка при покупке карты:", error);
+    }
+  };
   const removeFromCart = (cardId) => {
     setCart(cart.filter(item => item.id !== cardId));
   };
@@ -68,7 +77,7 @@ export default function HomePage() {
                       <span>{item.name}</span>
                       <p>{item.type}</p>
                       <button onClick={() => removeFromCart(item.id)}>Убрать</button>
-                      <button>Купить</button>
+                      <button onClick={() => buyCard(item.id)}>Купить</button>
                     </div>
                   </div>
                 ))}

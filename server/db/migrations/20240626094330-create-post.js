@@ -33,6 +33,9 @@ module.exports = {
       sold: {
         type: Sequelize.BOOLEAN,
       },
+      serialId: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

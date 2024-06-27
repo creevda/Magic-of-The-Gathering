@@ -12,11 +12,33 @@ import {
   Image,
 } from "@chakra-ui/react";
 import styles from "./Card.module.css";
+import axiosInstance from '../axiosInstance';
 
-export default function Cards({ card, addToCart }) {
+export default function Cards({ card, user, addToCart }) {
+  const [cardInfo, setCardInfo] = useState({});
   const [fullInfo, setFullInfo] = useState(false);
 
-  const handleInfo = () => {
+  const buyButtonHandle = async () => {
+    try {
+      const newCard = await axiosInstance.post("http://localhost:3000/cards", {
+        name: card.name,
+        category: card.type,
+        price: 1000,
+        city_owner: "Moscow",
+        description: card.text,
+        img: card.imageUrl,
+        frazzle: "new",
+        sold: false,
+        serialId: card.id
+      });
+      setCardInfo(() => newCard);
+      // setAccessToken(res.data.accessToken);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const heandlerInfo = () => {
     setFullInfo((prev) => !prev);
   };
 
@@ -31,7 +53,7 @@ export default function Cards({ card, addToCart }) {
             variant="ghost"
             colorScheme="blue"
             marginBottom="10px"
-            onClick={handleInfo}
+            onClick={heandlerInfo}
           >
             Назад
           </Button>
@@ -55,7 +77,7 @@ export default function Cards({ card, addToCart }) {
           <CardFooter justify="center">
             <ButtonGroup spacing="2">
               <Button
-                onClick={handleInfo}
+                onClick={heandlerInfo}
                 variant="solid"
                 colorScheme="blue"
                 marginBottom="10px"
@@ -67,9 +89,13 @@ export default function Cards({ card, addToCart }) {
                 variant="ghost"
                 colorScheme="blue"
                 marginBottom="10px"
+                borderRadius={15}
+                height={20}
               >
                 Добавить в корзину
+                
               </Button>
+              
             </ButtonGroup>
           </CardFooter>
         </Card>

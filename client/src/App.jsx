@@ -10,19 +10,33 @@ import HomePage from "./pages/HomePage/HomePage";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Root from "./Root";
-
+import axiosInstance from "./axiosInstance";
+import {setAccessToken} from "./axiosInstance";
 function App() {
   const [user, setUser] = useState();
 
+  useEffect(() => {
+    axiosInstance(`http://localhost:3000/tokens/refresh`).then((res) => {
+      setUser(res.data.user);
+      setAccessToken(res.data.accessToken);
+    });
+  }, []);
+  const handleBuy = (id) => {
+
+    setCartItems(cartItems.filter((item) => item.id !== id));
+  };
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage/>,
+      element: <Root user={user}/>,
       children: [
-        // {
-        //   path: "/",
-        //   element: <HomePage user={user} />,
-        // },
+        {
+          path: "/home",
+          element: <HomePage user={user} 
+          onBuy={handleBuy}
+          />,
+
+        },
         {
           path: "/login",
           element: <LoginPage setUser={setUser} />,
