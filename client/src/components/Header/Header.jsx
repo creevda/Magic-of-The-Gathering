@@ -25,8 +25,8 @@ function Header({user}) {
       <div className="logo">Карточки, картишки, картюшечки</div>
       <nav className="header-nav">
         { pathname === '/' && <button className="header-btn" onClick={() => navigate('/basket')}>Корзина</button> }
-        { pathname !== '/profile' && <button className="header-btn" onClick={() => navigate('/profile')}>Личный кабинет</button> }
-        { pathname !== '/' && <button className="header-btn" onClick={()=>navigate('/')}>Главная страница</button> }
+        { pathname === '/' && <button className="header-btn" onClick={() => navigate('/profile')}>Личный кабинет</button> }
+        { pathname === '/profile' && <button className="header-btn" onClick={()=>navigate('/')}>Главная страница</button> }
         { pathname === '/profile' && <button className="header-btn" onClick={logout}>Выйти из учётной записи</button> }
       </nav>
     </div>

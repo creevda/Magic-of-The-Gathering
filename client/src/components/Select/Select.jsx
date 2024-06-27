@@ -7,7 +7,7 @@
 import React, { useState } from 'react';
 import './Select.css';
 
-const CustomSelect = ({ options, placeholder }) => {
+const CustomSelect = ({ options, placeholder, setReqBody, reqBody }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(placeholder || options[0]); // Изменение здесь
 
@@ -15,6 +15,12 @@ const CustomSelect = ({ options, placeholder }) => {
 
   const handleSelectOption = (option) => {
     setSelectedOption(option);
+    if(option === "С завода" || option === 'Закалённая в боях' || option === 'Немного поношенная' || option === 'Поношенная' || option === 'После полевыех испытаний'){
+      setReqBody({...reqBody, "frazzle": option});
+    }
+    if(option === "Common" || option === 'Uncommon' || option === 'Rare' || option === 'Mythical' || option === 'Legendary'){
+      setReqBody({...reqBody, "rarity": option});
+    }
     setIsOpen(false);
   };
 

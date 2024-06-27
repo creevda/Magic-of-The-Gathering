@@ -6,7 +6,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mainRouter = require("./routes/api.router.js");
 const authRouter = require("./routes/auth.api.router.js");
-const upploadcardRouter = require("./routes/uploadcard.api.route.js");
+const uploadcardRouter = require("./routes/uploadcard.api.route.js");
 
 const app = express();
 const { PORT } = process.env;
@@ -23,6 +23,6 @@ app.use(cors(corsConfig));
 
 app.use("/", mainRouter);
 app.use("/auth", authRouter);
-app.use('/', upploadcardRouter)
+app.use('/api/router', uploadcardRouter);
 
 module.exports = app;

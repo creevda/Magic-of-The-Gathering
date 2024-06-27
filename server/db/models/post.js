@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable eol-last */
 /* eslint-disable comma-dangle */
 /* eslint-disable import/newline-after-import */
@@ -29,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
     frazzle: DataTypes.STRING,
     sold: DataTypes.BOOLEAN,
     serialId: DataTypes.STRING,
+    rarity: DataTypes.STRING,
+    artist: DataTypes.STRING,
+    type: DataTypes.STRING,
+    setName: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Post',

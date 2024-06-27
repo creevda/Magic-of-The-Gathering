@@ -5,16 +5,21 @@
 const router = require('express').Router();
 const { Post } = require('../../db/models');
 
-router.post('/posts', async (req, res) => {
+router.post('/posts:id', async (req, res) => {
   try {
     const post = await Post.create({
-      img: req.file.filename,
+      user_id: req.params.id,
       description: req.body.description,
       frazzle: req.body.frazzle,
       rarity: req.body.rarity,
       price: req.body.price,
+      name: req.body.name,
+      category: req.body.category,
+      img: req.body.img,
+      artist: req.body.artist,
+      type: req.body.type,
+      setName: req.body.setName,
     });
-
     res.status(200).json({ message: 'Данные успешно сохранены', post });
   } catch (error) {
     res.status(500).json({ message: 'Ошибка при сохранении данных', error });

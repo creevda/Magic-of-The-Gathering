@@ -8,7 +8,8 @@
 }
 
 .pageTitle {
-  width: 300px;
+  margin-top: -50px;
+  width: 350px;
 }
 
 .logTitle {
@@ -60,7 +61,7 @@
 
 
 .desc {
-  height: 75px;
+
 }
 
 .file {
@@ -76,12 +77,12 @@
   outline: none;
   border: 1px solid rgba(121, 13, 133, 0.479);
   border-radius: 25px;
-  height: 46px;
-  width: 140%;
+  height: 45px;
+  width: 80%;
   line-height: 0;
   text-decoration: none;
-  color: rgba(108, 31, 116, 0.986);
-  background-color: rgba(230, 77, 235, 0.144);
+  color: rgba(255, 255, 255, 0.986);
+  background-color: rgba(121, 13, 133, 0.479);
   position: relative;
   overflow: hidden;
   vertical-align: top;
@@ -103,7 +104,7 @@
   padding-left: 150px;
   display: flex;
   height: 700px;
-  width: 120%;
+  width: 100%;
 }
 
 .leftSide {
