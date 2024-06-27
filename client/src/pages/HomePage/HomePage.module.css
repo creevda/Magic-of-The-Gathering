@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+.cartItem {
+  transition: transform 0.3s ease;
+  background-color: #7070d4;
+  border-radius: 10px
+}
+
+.hovered {
+  transform: scale(1.05);
+}
+.cartItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.cartItem:hover {
+  transform: scale(1.05);
+}
+
+.cartItemImage {
+  width: 100px;
+  height: 150px;
+  margin-right: 10px;
+  border-radius: 10px
+}
+
+.cartItemDetails {
+  flex-grow: 1;
+}
+.cartContainer {
+  max-height: 400px; /* Ограничиваем высоту контейнера корзины */
+  overflow-y: auto; /* Добавляем вертикальную прокрутку */
+  width: 300px; /* Ограничиваем ширину контейнера корзины */
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px; /* Добавляем скругление углов */
+}
+
+/* Стили для скроллбара */
+.cartContainer::-webkit-scrollbar {
+  width: 10px; /* Ширина скроллбара */
+}
+
+.cartContainer::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Цвет фона трека */
+  border-radius: 8px; /* Скругление углов трека */
+}
+
+.cartContainer::-webkit-scrollbar-thumb {
+  background: #888; /* Цвет ползунка */
+  border-radius: 8px; /* Скругление углов ползунка */
+}
+
+.cartContainer::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Цвет ползунка при наведении */
+}
