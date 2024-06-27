@@ -62,6 +62,8 @@ export default function Cards({ card, user }) {
                 className="btn2"
                 marginBottom="10px"
                 onClick={heandlerInfo}
+                borderRadius={15}
+                height={20}
               >
                 Назад
               </Button>
@@ -98,6 +100,8 @@ export default function Cards({ card, user }) {
                   colorScheme="blue"
                   className="btn1"
                   marginBottom="10px"
+                  height={35}
+                  borderRadius={15}
                 >
                   Подробнее
                 </Button>
@@ -107,6 +111,8 @@ export default function Cards({ card, user }) {
                   colorScheme="blue"
                   className="btn2"
                   marginBottom="10px"
+                  height={35}
+                  borderRadius={15}
                 >
                   Купить(цена)
                 </Button>
