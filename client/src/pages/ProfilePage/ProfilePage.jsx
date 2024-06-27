@@ -40,7 +40,7 @@ function ProfilePage() {
   };
 
   return (
-    <div className="container">
+    <div className="container1">
       <div className="leftSide"></div>
       <div className="rightSide">
         <h1 className="pageTitle">Ваша информация</h1>
