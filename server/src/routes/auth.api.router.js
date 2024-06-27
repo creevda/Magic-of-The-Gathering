@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable linebreak-style */
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
@@ -32,35 +34,41 @@ router.post('/login', async (req, res) => {
     .json({ user: plainUser, accessToken });
 });
 
-router
-  .post('/registration', async (req, res) => {
-    const { username, email, password } = req.body;
+router.post('/registration', async (req, res) => {
+  const { username, email, password } = req.body;
 
-    if (!(username || email || password)) {
-      return res.status(400).json({ message: 'All fields are required' });
-    }
+  if (!(username || email || password)) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
 
+  if (password.length < 8) {
+    return res.status(400).json({ message: 'Password must be at least 8 characters long' });
+  }
+
+  try {
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: { username, email, password: await bcrypt.hash(password, 10) },
     });
-
+    if (!created) {
+      return res.status(403).json({ message: 'User with this email already exists' });
+    }
     const plainUser = user.get();
     delete plainUser.password;
-
-    if (!created) res.status(403).json({ message: 'User already exists' });
-
     const { accessToken, refreshToken } = generateToken({ user: plainUser });
-
     res
       .cookie('refreshToken', refreshToken, cookiesConfig.refresh)
       .cookie('accessToken', accessToken, cookiesConfig.access)
       .json({ user: plainUser, accessToken });
-  })
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
-  .get('/logout', (req, res) => {
-    res
-      .clearCookie('accessToken').clearCookie('refreshToken').sendStatus(200)
-  });
+router.get('/logout', (req, res) => {
+  res
+    .clearCookie('accessToken').clearCookie('refreshToken').sendStatus(200);
+});
 
 module.exports = router;

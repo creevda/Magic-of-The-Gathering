@@ -1,3 +1,11 @@
+/* eslint-disable eol-last */
+/* eslint-disable comma-dangle */
+/* eslint-disable import/newline-after-import */
+/* eslint-disable strict */
+/* eslint-disable lines-around-directive */
+/* eslint-disable indent */
+/* eslint-disable no-tabs */
+/* eslint-disable no-mixed-spaces-and-tabs */
 'use strict';
 const {
   Model
@@ -19,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     img: DataTypes.STRING,
     frazzle: DataTypes.STRING,
-    sold: DataTypes.BOOLEAN
+    sold: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Post',

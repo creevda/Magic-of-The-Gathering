@@ -1,11 +1,14 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/button-has-type */
 /* eslint-disable linebreak-style */
 import React, { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
 import { getAuthCookies } from '../../utils/utility';
 import './ProfilePage.css';
+import CustomSelect from '../../components/Select/Select'
 
 function ProfilePage() {
   const { accessToken } = getAuthCookies();
@@ -14,6 +17,9 @@ function ProfilePage() {
   const [frazzleState, setFrazzleState] = useState('');
   const [rarityState, setRarityState] = useState('');
   const [priceState, setPriceState] = useState('');
+  const [nameState, setNameState] = useState('');
+  const [image, setImage] = useState(null);
+
   const getUserData = (token) => {
     if (token) {
       const decoded = jwtDecode(token);
@@ -22,40 +28,38 @@ function ProfilePage() {
     }
   };
 
+  const options = ['Выберите потёртость', 'С завода', 'Закалённая в боях', 'Немного поношенная', 'Поношенная', 'После полевыех испытаний'];
+  const optionsRare = ['Выберите редкость', 'Common', 'Uncommon', 'Rare', 'Mythical', 'Legendary'];
+
   useEffect(() => {
     getUserData(accessToken);
   }, [accessToken]);
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   return (
     <div className="container">
       <div className="leftSide"></div>
       <div className="rightSide">
         <h1 className="pageTitle">Ваша информация</h1>
-        <button className="btnProfile">Загрузи картинку</button>
-        <select
-          className="selectProfile"
-          value={frazzleState}
-          onChange={(e) => setFrazzleState(e.target.value)}
-        >
-          <option value="">Выберите потёртость</option>
-          <option value="New">С завода</option>
-          <option value="PreNew">Вид новой</option>
-          <option value="Normis">Немного затёрта</option>
-          <option value="Bad">Средне испорчена</option>
-          <option value="VeryBad">Уберите эту штуку от моего лица</option>
-        </select>
-        <select
-          className="selectProfile"
-          value={rarityState}
-          onChange={(e) => setRarityState(e.target.value)}
-        >
-          <option value="">Выберите редкость</option>
-          <option value="Common">Common</option>
-          <option value="Uncommon">Uncommon</option>
-          <option value="Rare">Rare</option>
-          <option value="Mythical">Mythical</option>
-          <option value="Legendary">Legendary</option>
-        </select>
+        <input type="file" onChange={handleImageChange} />
+        <input
+          className="inputProfile"
+          type="text"
+          value={nameState}
+          onChange={(e) => setNameState(e.target.value)}
+          placeholder="Название карточки"
+        />
+        <CustomSelect 
+          options={options}
+          plsceholder='Выберите потёртость'
+        />
+        <CustomSelect 
+          options={optionsRare}
+          plsceholder='Выберите редкость'
+        />
         <input
           className="inputProfile"
           type="text"
@@ -70,6 +74,7 @@ function ProfilePage() {
           onChange={(e) => setDescriptionState(e.target.value)}
           placeholder="Введите описание карточки"
         />
+        <button className="btnProfile">Выставить карточку на продажу</button>
       </div>
     </div>
   );

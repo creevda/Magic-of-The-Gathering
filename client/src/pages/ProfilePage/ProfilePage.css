@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.pageTitle {
+  width: 300px;
+}
+
 .logTitle {
   margin-bottom: 30px;
   font-size: 45px;
@@ -56,7 +60,12 @@
 
 
 .desc {
-  height: 245px;
+  height: 75px;
+}
+
+.file {
+  display: inline-block;
+  box-sizing: border-box;
 }
 
 .btnProfile {
@@ -93,7 +102,7 @@
   padding-top: 150px;
   padding-left: 150px;
   display: flex;
-  height: 500px;
+  height: 700px;
   width: 120%;
 }
 
@@ -125,7 +134,7 @@
   width: 140%;
   line-height: 0;
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.986); /* Цвет текста */
+  color: rgba(0, 0, 0, 0.986);
   background-color: rgba(230, 77, 235, 0.144);
   position: relative;
   overflow: hidden;
