@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Where } = require('sequelize/lib/utils');
 const { Post } = require('../../db/models');
 
 router.post('/', async (req, res) => {
@@ -74,6 +75,42 @@ router.post('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message:  error });
   }
-});
+})
+.put('/:id/buy', async (req, res) => {
+  const { id } = req.params;
+  const {serialId,
+    name,
+    category,
+    city_owner,
+    description,
+    img,
+    frazzle,
+    sold}=req.body
+  try {
+    const [card, created] = await Post.findOrCreate({
+      where:{serialId:id.toString()},
+      defaults: {
+        serialId,
+        name,
+        category,
+        city_owner,
+        description,
+        img,
+        frazzle,
+        sold
+      }
+    });
+    console.log((id),'+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+    if (!card) {
+      return res.status(404).json({ message: 'Карта не найдена' });
+    }
+    
+    card.sold = true; 
+    await card.save();
 
-module.exports = router;
+    res.json(card);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+     module.exports = router;

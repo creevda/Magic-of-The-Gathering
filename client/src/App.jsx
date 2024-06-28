@@ -11,9 +11,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Root from "./Root";
 import axiosInstance from "./axiosInstance";
+import {setAccessToken} from "./axiosInstance";import SideBar from "./components/SideBarZ";
 
 function App() {
   const [user, setUser] = useState();
+  
 
   useEffect(() => {
     axiosInstance(`http://localhost:3000/tokens/refresh`).then((res) => {
@@ -21,23 +23,26 @@ function App() {
       setAccessToken(res.data.accessToken);
     });
   }, []);
+  const handleBuy = (id) => {
 
+    setCartItems(cartItems.filter((item) => item.id !== id));
+  };
   const router = createBrowserRouter([
+    {
+      path: "/login",
+      element: <LoginPage setUser={setUser} />,
+    },
+    {
+      path: "/registration",
+      element: <RegistrationPage setUser={setUser} />,
+    },
     {
       path: "/",
       element: <Root user={user}/>,
       children: [
         {
-          path: "/home",
+          path: "/",
           element: <HomePage user={user} />,
-        },
-        {
-          path: "/login",
-          element: <LoginPage setUser={setUser} />,
-        },
-        {
-          path: "/registration",
-          element: <RegistrationPage setUser={setUser} />,
         },
         {
           path: "/profile",

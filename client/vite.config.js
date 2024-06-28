@@ -9,7 +9,7 @@ export default ({ mode }) => {
     server: {
       proxy: {
         [process.env.VITE_API]: { // * адрес api
-          target: process.env.VITE_TARGET, // * порт подключения клиента к серву
+          target: process.env.VITE_TARGET,
           changeOrigin: true
         }
       },
