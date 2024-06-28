@@ -4,7 +4,7 @@ import { MDBContainer } from "mdb-react-ui-kit";
 import styles from "./HomePage.module.css";
 import axios from "axios";
 import Cards from "../../components/Card";
-import Select from "react-dropdown-select";
+import SideBarZ from "../../components/SideBarZ.jsx";
 
 export default function HomePage({ user }) {
   const [searchInput, setSearchInput] = useState("");
@@ -12,16 +12,6 @@ export default function HomePage({ user }) {
     loading: true,
     data: [],
   });
-  const options = [
-    {
-      value: 1,
-      label: 'Leanne Graham'
-    },
-    {
-      value: 2,
-      label: 'Ervin Howell'
-    }
-  ];
 
   const fetchCards = async (query = "") => {
     try {
@@ -56,11 +46,10 @@ export default function HomePage({ user }) {
             style={{ color: "black" }}
             onChange={(e) => setSearchInput(e.target.value)}
             value={searchInput}
-          />
+          /><SideBarZ cards={cards.data} setCards={setCards}/>
         </MDBContainer>
         <MDBContainer className="py-5">
-        <Select options={options} onChange={(values) => this.setValues(values)} />
-        </MDBContainer>
+</MDBContainer>
         <div
           style={{
             display: "flex",
