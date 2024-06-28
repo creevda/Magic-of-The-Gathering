@@ -39,16 +39,25 @@ export default function HomePage({ user }) {
   const addToCart = (card) => {
     setCart([...cart, card]);
   };
+
   const buyCard = async (cardId) => {
     try {
-      await axios.put(`http://localhost:3000/cards/${cardId}/buy`, {
-        name: cart[0].name,
+      console.log(`http://localhost:3000/cards/${cardId}/buy`);
+      console.log(cart);
+      await axios.put(`http://localhost:3000/cards/${cardId}/buy`, { name: cart[0].name });
+
+// тут отправка на почту 
+      await axios.post('http://localhost:3000/send-email', {
+        subject: 'Покупка карты',
+        text: `Вы успешно приобрели карту с ID: ${cardId}.`,
+        recipient: '@mail', // почта пользователя
       });
-      removeFromCart(cardId); // Удаляем карту из корзины после покупки
+      removeFromCart(cardId); 
     } catch (error) {
       console.error("Ошибка при покупке карты:", error);
     }
   };
+
   const removeFromCart = (cardId) => {
     setCart(cart.filter((item) => item.id !== cardId));
   };
