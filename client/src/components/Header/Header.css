@@ -33,8 +33,9 @@
 }
 
 .header-nav {
+    margin-right: 30px;
     display: flex;
-    width: 400px;
+    width: 450px;
     justify-content: space-evenly;
 }
 

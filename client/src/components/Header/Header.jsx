@@ -51,6 +51,12 @@ function Header({user}) {
       </div>
      
       <nav className="header-nav">
+
+       // { pathname === '/' && <button className="header-btn" onClick={() => navigate('/basket')}>Корзина</button> }
+       // { pathname === '/' && <button className="header-btn" onClick={() => navigate('/profile')}>Личный кабинет</button> }
+       // { pathname === '/profile' && <button className="header-btn" onClick={()=>navigate('/')}>Главная страница</button> }
+       // { pathname === '/profile' && <button className="header-btn" onClick={logout}>Выйти из учётной записи</button> }
+
          <button className="header-btn" onClick={() => navigate('/')}>Личный кабинет</button> 
         <button className="header-btn" onClick={toggleMenu}>
           <i className="fas fa-bars"></i>

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable linebreak-style */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/react-in-jsx-scope */
@@ -10,21 +11,32 @@ function LoginPage() {
   const navigate = useNavigate();
   const [stateLogin, setStateLogin] = useState('');
   const [statePassword, setStatePassword] = useState('');
+  const [error, setError] = useState('');
 
   const loginHandler = async () => {
-    const result = await axios.post(
-      'http://localhost:3000/auth/login',
-      {
-        email: stateLogin,
-        password: statePassword,
-      },
-      { withCredentials: true },
-    );
+    try {
+      const result = await axios.post(
+        'http://localhost:3000/auth/login',
+        {
+          email: stateLogin,
+          password: statePassword,
+        },
+        { withCredentials: true }
+      );
 
-    if (result.status === 200) {
-      navigate('/');
+      if (result.status === 200) {
+        console.log('Данные пользователя:', result.data.user);
+        navigate('/');
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        setError('Неверный email или пароль');
+      } else {
+        setError('Произошла ошибка при авторизации');
+      }
     }
   };
+
   return (
     <div className="logWindow">
       <h1 className="logTitle">Авторизация</h1>
@@ -43,6 +55,7 @@ function LoginPage() {
           placeholder="Введите пароль"
         />
       </div>
+      {error && <div className="errorMessage">{error}</div>}
       <div className="buttonBlockLog">
         <button className="logBtn" onClick={loginHandler}>Выполнить вход</button>
         <button className="logBtn" onClick={() => navigate('/registration')}>К регистрации</button>

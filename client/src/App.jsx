@@ -48,6 +48,7 @@ function App() {
           path: "/profile",
           element: <ProfilePage user={user} setUser={setUser} />,
         },
+        
       ],
     },
   ]);

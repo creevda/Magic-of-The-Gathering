@@ -36,6 +36,18 @@ module.exports = {
       serialId: {
         type: Sequelize.STRING,
       },
+      rarity: {
+        type: Sequelize.STRING,
+      },
+      artist: {
+        type: Sequelize.STRING,
+      },
+      type: {
+        type: Sequelize.STRING,
+      },
+      setName: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

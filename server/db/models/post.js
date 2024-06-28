@@ -1,3 +1,12 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable eol-last */
+/* eslint-disable comma-dangle */
+/* eslint-disable import/newline-after-import */
+/* eslint-disable strict */
+/* eslint-disable lines-around-directive */
+/* eslint-disable indent */
+/* eslint-disable no-tabs */
+/* eslint-disable no-mixed-spaces-and-tabs */
 'use strict';
 const {
   Model
@@ -21,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
     frazzle: DataTypes.STRING,
     sold: DataTypes.BOOLEAN,
     serialId: DataTypes.STRING,
+    rarity: DataTypes.STRING,
+    artist: DataTypes.STRING,
+    type: DataTypes.STRING,
+    setName: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Post',
