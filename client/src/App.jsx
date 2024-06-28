@@ -13,9 +13,11 @@ import Root from "./Root";
 import axiosInstance from "./axiosInstance";
 import {setAccessToken} from "./axiosInstance";import SideBar from "./components/SideBarZ";
 
+
 function App() {
   const [user, setUser] = useState();
-  
+  const [isCartVisible, setIsCartVisible] = useState(true);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     axiosInstance(`http://localhost:3000/tokens/refresh`).then((res) => {
@@ -34,15 +36,15 @@ function App() {
     },
     {
       path: "/registration",
-      element: <RegistrationPage setUser={setUser} />,
+      element: <RegistrationPage setUser={setUser}  />,
     },
     {
       path: "/",
-      element: <Root user={user}/>,
+      element: <Root user={user} setIsCartVisible={setIsCartVisible} isCartVisible={isCartVisible} cart={cart} setCart={setCart}/>,
       children: [
         {
           path: "/",
-          element: <HomePage user={user} />,
+          element: <HomePage user={user} cart={cart} setCart={setCart} />,
         },
         {
           path: "/profile",

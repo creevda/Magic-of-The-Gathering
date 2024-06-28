@@ -1,16 +1,37 @@
 /* eslint-disable react/button-has-type */
-import React from "react";
-import "./Header.css";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
 
-function Header({ user }) {
+import React from 'react';
+import './Header.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+import styles from "../../pages/HomePage/HomePage.module.css";
+
+function Header({user, isCartVisible, setIsCartVisible,cart,setCart}) {
+  
+  console.log(user)
+
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  
+  
+  const buyCard = async (cardId) => {
+    try {
+      await axios.put(`http://localhost:3000/cards/${cardId}/buy`, {
+        name: cart[0].name,
+      });
+      removeFromCart(cardId); // Удаляем карту из корзины после покупки
+    } catch (error) {
+      console.error("Ошибка при покупке карты:", error);
+    }
+  };
+  const removeFromCart = (cardId) => {
+    setCart(cart.filter((item) => item.id !== cardId));
+  };
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -40,8 +61,32 @@ function Header({ user }) {
   };
 
   return (
-    <div className={`header ${scrolled ? "header-scrolled" : ""}`}>
-      <div className="logo" onClick={() => navigate("/")}>Magic: The Gathering.</div>
+
+    <>
+    {isCartVisible && ( 
+            <div className={styles.cartContainer}>
+              <h2>Корзина</h2>
+              {cart.map((item) => (
+                <div key={item.id} className={styles.cartItem}>
+                  <img
+                    src={item.imageUrl}
+                    alt={item.name}
+                    className={styles.cartItemImage}
+                  />
+                  <div className={styles.cartItemDetails}>
+                    <span>{item.name}</span>
+                    <p>{item.type}</p>
+                    <button onClick={() => removeFromCart(item.id)}>
+                      Убрать
+                    </button>
+                    <button onClick={() => buyCard(item.id)}>Купить</button>
+                  </div>
+                </div>
+              ))}
+            </div> )}
+    <div className={`header ${scrolled ? 'header-scrolled' : ''}`}>
+      <div className="logo">Magic: The Gathering.</div>
+
       <div className="userLogo">
         <div id="first">{user ? user.username : "гость"}</div>
         <div>{user ? user.city : "Москва"}</div>
@@ -72,7 +117,9 @@ function Header({ user }) {
         <div className="menu">
           <ul>
             <li>
-              <button onClick={() => navigate("/link1")}>Корзина</button>
+
+              <button onClick={() => setIsCartVisible(!isCartVisible)}>Корзина</button>
+
             </li>
             <li>
               <button onClick={() => navigate("/link2")}>Пополнить</button>
@@ -84,6 +131,9 @@ function Header({ user }) {
         </div>
       )}
     </div>
+
+    </>
+
   );
 }
 

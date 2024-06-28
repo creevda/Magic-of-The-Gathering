@@ -45,6 +45,11 @@
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 8px; /* Добавляем скругление углов */
+  position: fixed;
+  left:1365px;
+  top:205px;
+  background-color: rgba(255, 255, 255, 0.3)
+
 }
 
 /* Стили для скроллбара */
@@ -64,4 +69,14 @@
 
 .cartContainer::-webkit-scrollbar-thumb:hover {
   background: #555; /* Цвет ползунка при наведении */
+}
+.filters {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px;
+  z-index: 1;
 }
