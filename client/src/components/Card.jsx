@@ -85,7 +85,7 @@ export default function Cards({ card, user, addToCart }) {
                 Подробнее
               </Button>
               <Button
-                onClick={() => {addToCart(card)}}
+                onClick={() => {addToCart(card); buyButtonHandle()}}
                 variant="ghost"
                 colorScheme="blue"
                 marginBottom="10px"
