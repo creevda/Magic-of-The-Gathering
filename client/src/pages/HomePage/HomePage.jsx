@@ -76,33 +76,6 @@ export default function HomePage({ user }) {
           <SideBarZ cards={cards.data} setCards={setCards} fetchCards={fetchCards} searchInput={searchInput}/>
         </MDBContainer>
 
-        <MDBContainer className="py-5">
-          <button onClick={() => setIsCartVisible(!isCartVisible)}>
-            {isCartVisible ? "Скрыть корзину" : "Показать корзину"}
-          </button>
-          {isCartVisible && (
-            <div className={styles.cartContainer}>
-              <h2>Корзина</h2>
-              {cart.map((item) => (
-                <div key={item.id} className={styles.cartItem}>
-                  <img
-                    src={item.imageUrl}
-                    alt={item.name}
-                    className={styles.cartItemImage}
-                  />
-                  <div className={styles.cartItemDetails}>
-                    <span>{item.name}</span>
-                    <p>{item.type}</p>
-                    <button onClick={() => removeFromCart(item.id)}>
-                      Убрать
-                    </button>
-                    <button onClick={() => buyCard(item.id)}>Купить</button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </MDBContainer>
         <div
           style={{
             display: "flex",
