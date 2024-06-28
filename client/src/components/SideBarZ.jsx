@@ -5,13 +5,15 @@ import "./SearchBar.css";
 
 export default function SideBar({ cards, setCards }) {
   const [visible, setVisible] = useState(false);
+
   const [category, setCategory] = useState();
-
-  const rarityHandle = (category) => {
-    setCategory(category);
-  };
-
-  console.log(cards);
+  
+console.log(category);
+  const rarityHandle = (categoty1) => {
+    setCategory(categoty1)
+    const filteredCategory = cards.filter(card => card.rarity === categoty1)
+    setCards(() => ({ data: filteredCategory, loading: false }));
+  }
 
   return (
     <div className="searchAll">

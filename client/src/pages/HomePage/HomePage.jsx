@@ -41,7 +41,7 @@ export default function HomePage({ user,cart , setCart }) {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "center",
               alignItems: "center",
             }}
             
@@ -55,6 +55,7 @@ export default function HomePage({ user,cart , setCart }) {
               value={searchInput}
             />
           </div>
+          <SideBarZ cards={cards.data} setCards={setCards} />
         </MDBContainer>
         <SideBarZ cards={cards.data} setCards={setCards} />
         
