@@ -4,6 +4,7 @@ import { MDBContainer } from "mdb-react-ui-kit";
 import styles from "./HomePage.module.css";
 import axios from "axios";
 import Cards from "../../components/Card";
+import SideBarZ from "../../components/SideBarZ.jsx";
 
 export default function HomePage({ user }) {
   
@@ -54,7 +55,9 @@ export default function HomePage({ user }) {
               style={{ color: "black" }}
               onChange={(e) => setSearchInput(e.target.value)}
               value={searchInput}
-            />
+            /><SideBarZ cards={cards.data} setCards={setCards}/>
+        </MDBContainer>
+        <MDBContainer className="py-5">
             <button onClick={() => setIsCartVisible(!isCartVisible)}>
               {isCartVisible ? "Скрыть корзину" : "Показать корзину"}
             </button>
@@ -75,7 +78,7 @@ export default function HomePage({ user }) {
               </div>
             )}
           </div>
-        </MDBContainer>
+</MDBContainer>
         <div
           style={{
             display: "flex",

@@ -11,7 +11,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Root from "./Root";
 import axiosInstance from "./axiosInstance";
-import {setAccessToken} from "./axiosInstance";
+import {setAccessToken} from "./axiosInstance";import SideBar from "./components/SideBarZ";
+
 function App() {
   const [user, setUser] = useState();
   
