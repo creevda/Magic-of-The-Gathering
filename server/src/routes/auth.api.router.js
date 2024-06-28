@@ -35,9 +35,9 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/registration', async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, city } = req.body;
 
-  if (!(username || email || password)) {
+  if (!(username || email || password || city)) {
     return res.status(400).json({ message: 'All fields are required' });
   }
 
@@ -48,7 +48,7 @@ router.post('/registration', async (req, res) => {
   try {
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { username, email, password: await bcrypt.hash(password, 10) },
+      defaults: { username, email, password: await bcrypt.hash(password, 10), city },
     });
     if (!created) {
       return res.status(403).json({ message: 'User with this email already exists' });

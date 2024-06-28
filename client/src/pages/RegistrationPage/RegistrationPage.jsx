@@ -13,10 +13,19 @@ function RegistrationPage() {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [cityCard, setCityCard] = useState('');
+  const [city, setCity] = useState('');
   const [error, setError] = useState('');
 
+  const isEmailValid = (email) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailRegex.test(email);
+  };
+
   const registrationHandler = async () => {
+    if (!isEmailValid(email)) {
+      setError('Неверный формат email');
+      return;
+    }
     if (password.length < 8) {
       setError('Пароль должен быть не менее 8 символов');
       return;
@@ -25,7 +34,7 @@ function RegistrationPage() {
     try {
       const result = await axios.post(
         'http://localhost:3000/auth/registration',
-        { username: userName, email, password, cityCard },
+        { username: userName, email, password, city },
         { withCredentials: true }
       );
 
@@ -48,7 +57,7 @@ function RegistrationPage() {
         <input className="regInput" placeholder="Ваше имя" value={userName} onChange={(e) => setUserName(e.target.value)} />
         <input className="regInput" placeholder="Ваш E-mail" value={email} type="email" onChange={(e) => setEmail(e.target.value)} />
         <input className="regInput" type="password" placeholder="Введите пароль" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <input className="regInput" placeholder="Ваш город" value={cityCard} onChange={(e) => setCityCard(e.target.value)} />
+        <input className="regInput" placeholder="Ваш город" value={city} onChange={(e) => setCity(e.target.value)} />
       </div>
       {error && <div className="errorMessage">{error}</div>}
       <div className="buttonBlockReg">

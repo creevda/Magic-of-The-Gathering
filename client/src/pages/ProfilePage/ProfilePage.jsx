@@ -24,12 +24,12 @@ function ProfilePage() {
   const [artistState, setArtistState] = useState('');
   const [typeState, setTypeState] = useState('');
   const [imgState, setImgState] = useState('');
-  // const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [image, setImage] = useState(null);
   const [reqBody, setReqBody] = useState({});
 
   const resetForm = () => {
-    setImgState('');
+    // setImgState('');
     setNameState('');
     setCardState('');
     setCategoryState('');
@@ -75,11 +75,12 @@ function ProfilePage() {
       console.error('Ошибка при отправке данных:', error);
     }
   };
-
+/* <img src={post.img ? post.img : "card.jpg"} /> */
   return (
     <div className="container1">
+      
       <div className="leftSide">
-      {/* src={card.imageUrl ? card.imageUrl : "card.jpg"} */}
+        {<img src={imgState  ? imgState : "card.jpg"}/>}
       </div>
       <div className="rightSide">
         <h1 className="pageTitle">Добавить новую карту</h1>
