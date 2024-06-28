@@ -13,15 +13,23 @@
     display: flex;
     margin: auto;
     padding: 0 15px;
+    display: flex;
+    background-color: rgba(230, 77, 235, 0.144);
+    transition: background-color 0.3s ease;
+
 }
+.header-scrolled {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 
 .logo {
     margin-left: 0px;
     color: rgba(108, 31, 116, 0.986);
     width: 600px;
     max-height: 40px;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
+    padding-right: 80px;
 }
 
 .header-nav {
@@ -57,3 +65,64 @@
     transform: translate(0,-2px);
     box-shadow: 0 20px 40px 0 rgba(230, 77, 235, 0.384);
 }
+.userLogo{
+    color:rgb(100, 87, 219);
+    display: flex;
+
+    padding-left: 300px;
+    
+   
+}
+#first{
+    padding-left: 600px;
+    margin-right: 10px;
+}
+.menu{
+    margin-right: 30px;
+}
+.header-btn {
+    /* Ваши существующие стили */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header-btn i {
+    font-size: 24px; /* Размер иконки */
+    color: rgba(108, 31, 116, 0.986); /* Цвет иконки */
+  }
+  .menu {
+    position: absolute;
+    top: 85px; /* Высота хедера */
+    right: 10px; /* Отступ от правого края */
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu li {
+    padding: 5px 0;
+  }
+  
+  .menu button {
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .menu button:hover {
+    text-decoration: underline;
+  }

@@ -14,6 +14,7 @@ import axiosInstance from "./axiosInstance";
 import {setAccessToken} from "./axiosInstance";
 function App() {
   const [user, setUser] = useState();
+  
 
   useEffect(() => {
     axiosInstance(`http://localhost:3000/tokens/refresh`).then((res) => {
@@ -27,23 +28,20 @@ function App() {
   };
   const router = createBrowserRouter([
     {
+      path: "/login",
+      element: <LoginPage setUser={setUser} />,
+    },
+    {
+      path: "/registration",
+      element: <RegistrationPage setUser={setUser} />,
+    },
+    {
       path: "/",
       element: <Root user={user}/>,
       children: [
         {
           path: "/home",
-          element: <HomePage user={user} 
-          onBuy={handleBuy}
-          />,
-
-        },
-        {
-          path: "/login",
-          element: <LoginPage setUser={setUser} />,
-        },
-        {
-          path: "/registration",
-          element: <RegistrationPage setUser={setUser} />,
+          element: <HomePage user={user} />,
         },
         {
           path: "/profile",
