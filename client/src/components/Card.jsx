@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "animate.css";
 import {
   Card,
   CardBody,
@@ -29,7 +30,10 @@ export default function Cards({ card, user, addToCart }) {
         img: card.imageUrl,
         frazzle: "new",
         sold: false,
-        serialId: card.id
+        serialId: card.id,
+        rarity: card.rarity,
+        artist: card.artist,
+        setName: card.setName,
       });
       setCardInfo(() => newCard);
       // setAccessToken(res.data.accessToken);
@@ -54,6 +58,8 @@ export default function Cards({ card, user, addToCart }) {
             colorScheme="blue"
             marginBottom="10px"
             onClick={heandlerInfo}
+            borderRadius={15}
+            height={20}
           >
             Назад
           </Button>
@@ -81,16 +87,18 @@ export default function Cards({ card, user, addToCart }) {
                 variant="solid"
                 colorScheme="blue"
                 marginBottom="10px"
+                borderRadius={15}
+                height={30}
               >
                 Подробнее
               </Button>
               <Button
-                onClick={() => addToCart(card)}
+                onClick={() => {addToCart(card); buyButtonHandle()}}
                 variant="ghost"
                 colorScheme="blue"
                 marginBottom="10px"
                 borderRadius={15}
-                height={20}
+                height={30}
               >
                 Добавить в корзину
                 
