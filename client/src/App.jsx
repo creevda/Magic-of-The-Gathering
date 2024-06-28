@@ -11,7 +11,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Root from "./Root";
 import axiosInstance from "./axiosInstance";
-
+import {setAccessToken} from "./axiosInstance";
 function App() {
   const [user, setUser] = useState();
   
@@ -22,7 +22,10 @@ function App() {
       setAccessToken(res.data.accessToken);
     });
   }, []);
+  const handleBuy = (id) => {
 
+    setCartItems(cartItems.filter((item) => item.id !== id));
+  };
   const router = createBrowserRouter([
     {
       path: "/login",
@@ -37,7 +40,7 @@ function App() {
       element: <Root user={user}/>,
       children: [
         {
-          path: "/",
+          path: "/home",
           element: <HomePage user={user} />,
         },
         {
