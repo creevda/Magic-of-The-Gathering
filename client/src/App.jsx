@@ -40,7 +40,7 @@ function App() {
       element: <Root user={user}/>,
       children: [
         {
-          path: "/home",
+          path: "/",
           element: <HomePage user={user} />,
         },
         {

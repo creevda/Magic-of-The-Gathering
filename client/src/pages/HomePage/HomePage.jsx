@@ -5,7 +5,7 @@ import styles from "./HomePage.module.css";
 import axios from "axios";
 import Cards from "../../components/Card";
 
-export default function HomePage() {
+export default function HomePage({ user }) {
   
   const [searchInput, setSearchInput] = useState("");
   const [cards, setCards] = useState({
@@ -19,7 +19,6 @@ export default function HomePage() {
       try {
         const { data } = await axios.get('https://api.magicthegathering.io/v1/cards');
         setCards(() => ({ data: data.cards, loading: false }));
-        console.log(cart,'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');
       } catch (err) {
         console.log(err.message);
       }
@@ -27,19 +26,12 @@ export default function HomePage() {
     fetchCards();
   }, []);
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      // searchHandle();
-    }
-  };
 
   const addToCart = (card) => {
     setCart([...cart, card]);
   };
   const buyCard = async (cardId) => {
     try {
-      console.log(`http://localhost:3000/cards/${cardId}/buy`);
-      console.log(cart);
       await axios.put(`http://localhost:3000/cards/${cardId}/buy`,{name:cart[0].name,});
       removeFromCart(cardId); // Удаляем карту из корзины после покупки
     } catch (error) {
@@ -61,7 +53,6 @@ export default function HomePage() {
               placeholder="Поиск..."
               style={{ color: "black" }}
               onChange={(e) => setSearchInput(e.target.value)}
-              onKeyDown={handleKeyDown}
               value={searchInput}
             />
             <button onClick={() => setIsCartVisible(!isCartVisible)}>
@@ -96,7 +87,7 @@ export default function HomePage() {
         >
           {!cards.loading &&
             cards.data.map(
-              (card, i) => i % 2 === 0 && <Cards key={card.id} card={card} addToCart={addToCart} />
+              (card, i) => i % 2 === 0 && <Cards key={card.id} card={card} addToCart={addToCart} user={user}/>
             )}
         </div>
       </div>
