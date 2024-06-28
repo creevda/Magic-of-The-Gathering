@@ -10,7 +10,7 @@ import { getAuthCookies } from '../../utils/utility';
 import './ProfilePage.css';
 import CustomSelect from '../../components/Select/Select'
 
-function ProfilePage() {
+function ProfilePage({ user }) {
   const { refreshToken } = getAuthCookies();
   console.log(refreshToken);
   const [userState, setUserState] = useState({});

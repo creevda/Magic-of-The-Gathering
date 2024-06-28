@@ -29,7 +29,10 @@ export default function Cards({ card, user, addToCart }) {
         img: card.imageUrl,
         frazzle: "new",
         sold: false,
-        serialId: card.id
+        serialId: card.id,
+        rarity: card.rarity,
+        artist: card.artist,
+        setName: card.setName,
       });
       setCardInfo(() => newCard);
       // setAccessToken(res.data.accessToken);
