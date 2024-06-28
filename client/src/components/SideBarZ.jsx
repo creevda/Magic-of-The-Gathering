@@ -5,12 +5,13 @@ import { Button } from "primereact/button";
 export default function SideBar({ cards, setCards }) {
   const [visible, setVisible] = useState(false);
   const [category, setCategory] = useState()
-
-  const rarityHandle = (categoty) => {
-    setCategory(category)
+console.log(category);
+  const rarityHandle = (categoty1) => {
+    setCategory(categoty1)
+    const filteredCategory = cards.filter(card => card.rarity === categoty1)
+    setCards(() => ({ data: filteredCategory, loading: false }));
   }
 
-  console.log(cards);
   return (
     <div className="card flex justify-content-center">
       <Sidebar style={{marginTop: "154px", fontSize: "25px"}} visible={visible} onHide={() => setVisible(false)}>

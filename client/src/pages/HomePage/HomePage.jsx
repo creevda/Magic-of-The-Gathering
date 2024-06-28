@@ -52,7 +52,7 @@ export default function HomePage({ user }) {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "center",
               alignItems: "center",
             }}
           >
@@ -64,8 +64,8 @@ export default function HomePage({ user }) {
               onChange={(e) => setSearchInput(e.target.value)}
               value={searchInput}
             />
-            <SideBarZ cards={cards.data} setCards={setCards} />
           </div>
+          <SideBarZ cards={cards.data} setCards={setCards} />
         </MDBContainer>
 
         <MDBContainer className="py-5">
