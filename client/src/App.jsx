@@ -16,7 +16,7 @@ import {setAccessToken} from "./axiosInstance";import SideBar from "./components
 
 function App() {
   const [user, setUser] = useState();
-  const [isCartVisible, setIsCartVisible] = useState(true);
+  const [isCartVisible, setIsCartVisible] = useState(false);
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
